@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"net/http"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -47,4 +48,10 @@ func main() {
 	// project服务启动
 	//svr := projectservice.NewServer(injector.ProjectHandler, logOpt)
 	//svr.Run()
+
+	mux := http.NewServeMux()
+	mux.HandleFunc("/product/create", injector.ProjectHandler.CreateProject)
+
+	err = http.ListenAndServe(":3333", mux)
+	log.Fatal(err)
 }

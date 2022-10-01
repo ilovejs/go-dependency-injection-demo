@@ -1,14 +1,21 @@
 package app
 
-import "DIdemo/handler"
+import (
+	"github.com/google/wire"
 
-func NewInjector(handler *handler.ProjectHandler) *Injector {
-	return &Injector{
-		ProjectHandler: handler,
-	}
-}
+	"DIdemo/handler"
+)
+
+//func NewInjector(handler *handler.ProjectHandler) *Injector {
+//	return &Injector{
+//		ProjectHandler: handler,
+//	}
+//}
+
+var InjectorSet = wire.NewSet(
+	wire.Struct(new(Injector), "*"),
+)
 
 type Injector struct {
 	ProjectHandler *handler.ProjectHandler
-	// components，others...
 }

@@ -14,24 +14,20 @@ import (
 
 func BuildInjector(db *gorm.DB) (*Injector, error) {
 	wire.Build(
-		NewInjector,
+		//NewInjector,
+		InjectorSet,
 
 		// handler
-		handler.NewProjectHandler,
+		handler.ProjectHandlerSet,
 
 		// services
-		service.NewProjectService,
-		// 更多service...
+		service.ServiceSet,
 
 		//dal
-		dal.NewProjectDal,
-		dal.NewQuestionDal,
-		dal.NewQuestionModelDal,
-		// 更多dal...
+		dal.DalSet,
 
 		// db
 		//common.InitGormDB,
-		// other components...
 	)
 
 	return new(Injector), nil

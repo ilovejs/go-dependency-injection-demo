@@ -16,11 +16,25 @@ import (
 // Injectors from wire.go:
 
 func BuildInjector(db *gorm.DB) (*Injector, error) {
-	projectDal := dal.NewProjectDal(db)
-	questionDal := dal.NewQuestionDal(db)
-	questionModelDal := dal.NewQuestionModelDal(db)
-	projectService := service.NewProjectService(projectDal, questionDal, questionModelDal)
-	projectHandler := handler.NewProjectHandler(projectService)
-	injector := NewInjector(projectHandler)
+	projectDal := &dal.ProjectDal{
+		DB: db,
+	}
+	questionDal := &dal.QuestionDal{
+		DB: db,
+	}
+	questionModelDal := &dal.QuestionModelDal{
+		DB: db,
+	}
+	projectService := &service.ProjectService{
+		ProjectDal:       projectDal,
+		QuestionDal:      questionDal,
+		QuestionModelDal: questionModelDal,
+	}
+	projectHandler := &handler.ProjectHandler{
+		ProjectService: projectService,
+	}
+	injector := &Injector{
+		ProjectHandler: projectHandler,
+	}
 	return injector, nil
 }
