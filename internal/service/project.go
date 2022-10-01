@@ -7,7 +7,7 @@ import (
 	"github.com/google/wire"
 
 	"DIdemo/dal"
-	"DIdemo/schema"
+	"DIdemo/internal/schema"
 )
 
 type IProjectService interface {

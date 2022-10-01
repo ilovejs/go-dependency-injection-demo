@@ -9,7 +9,7 @@ package app
 import (
 	"DIdemo/dal"
 	"DIdemo/handler"
-	"DIdemo/service"
+	"DIdemo/internal/service"
 	"gorm.io/gorm"
 )
 

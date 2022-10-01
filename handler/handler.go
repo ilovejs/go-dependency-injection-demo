@@ -8,8 +8,8 @@ import (
 
 	"github.com/google/wire"
 
-	"DIdemo/schema"
-	"DIdemo/service"
+	"DIdemo/internal/schema"
+	"DIdemo/internal/service"
 )
 
 var ProjectHandlerSet = wire.NewSet(

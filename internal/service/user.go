@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"DIdemo/dal"
-	"DIdemo/schema"
+	"DIdemo/internal/schema"
 )
 
 type UserService struct {

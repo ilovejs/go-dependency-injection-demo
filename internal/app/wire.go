@@ -9,7 +9,7 @@ import (
 
 	"DIdemo/dal"
 	"DIdemo/handler"
-	"DIdemo/service"
+	"DIdemo/internal/service"
 )
 
 func BuildInjector(db *gorm.DB) (*Injector, error) {

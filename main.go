@@ -9,7 +9,7 @@ import (
 
 	"DIdemo/dal"
 	"DIdemo/internal/app"
-	"DIdemo/service"
+	"DIdemo/internal/service"
 )
 
 func main() {
