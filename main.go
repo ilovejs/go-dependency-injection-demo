@@ -7,6 +7,7 @@ import (
 	"gorm.io/gorm"
 
 	"DIdemo/dal"
+	"DIdemo/internal/app"
 	"DIdemo/service"
 )
 
@@ -23,6 +24,10 @@ func main() {
 
 	// 通过将 db 实例对象注入到 dal 中，再将 dal 实例对象注入到 service 中，
 	// 实现了层级间的依赖注入。解耦了部分依赖关系
+	// Translation:
+	// we inject db instance into dal,
+	// then inject dal instance to service
+	// decouple some dependency relations.
 	userDal := dal.NewUserDal(db)
 
 	// changed this line from origin
@@ -31,4 +36,15 @@ func main() {
 	)
 
 	log.Printf("userService: %v", userService)
+
+	injector, err := app.BuildInjector(db)
+	if err != nil {
+		panic(err)
+	}
+
+	log.Printf("%v", injector)
+
+	// project服务启动
+	//svr := projectservice.NewServer(injector.ProjectHandler, logOpt)
+	//svr.Run()
 }
