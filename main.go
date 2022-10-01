@@ -21,6 +21,8 @@ func main() {
 		panic(err)
 	}
 
+	// 通过将 db 实例对象注入到 dal 中，再将 dal 实例对象注入到 service 中，
+	// 实现了层级间的依赖注入。解耦了部分依赖关系
 	userDal := dal.NewUserDal(db)
 
 	// changed this line from origin
